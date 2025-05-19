@@ -26,7 +26,7 @@ const Navigation2 = ({ topNavAlignSelf, topNavFlex }) => {
   const navigate = useNavigate();
 
   const onSequenceHandlerContainerClick = useCallback(() => {
-    navigate("/");
+    navigate("/homepage1");
   }, [navigate]);
 
   return (
@@ -36,7 +36,7 @@ const Navigation2 = ({ topNavAlignSelf, topNavFlex }) => {
     >
       <header className="self-stretch bg-gray-900 flex flex-row items-center justify-between py-0 px-8 box-border max-w-full gap-[20px]">
         <div className="flex flex-row items-center justify-center gap-[8px] max-w-full">
-        <Link to="/" style={{ textDecoration: 'none' }}>
+        <Link to="/homepage1" style={{ textDecoration: 'none' }}>
           <Property1Active
             home="Home"
             property1ActiveBoxShadow="0px 2px 0px #ff6636 inset"
@@ -243,47 +243,8 @@ const Navigation2 = ({ topNavAlignSelf, topNavFlex }) => {
           </div>
         </div>
         <div className="flex flex-row items-center justify-start gap-[24px] max-w-full">
-          <img className="h-6 w-6 relative" alt="" src="/bell.svg" />
-          <img className="h-6 w-6 relative" alt="" src="/heart.svg" />
           <div className="flex flex-row items-start justify-start gap-[12px] lg:hidden">
-            <SizeLargePositionsPrimary
-              button="Create Account"
-              sizeLargePositionsPrimaryBackgroundColor="#ffeee8"
-              sizeLargePositionsPrimaryBorder="unset"
-              sizeLargePositionsPrimaryPosition="unset"
-              sizeLargePositionsPrimaryTop="unset"
-              sizeLargePositionsPrimaryLeft="unset"
-              sizeLargePositionsPrimaryWidth="unset"
-              sizeLargePositionsPrimaryMarginLeft="unset"
-              sizeLargePositionsPrimaryMargin="unset"
-              sizeLargePositionsPrimaryRight="unset"
-              sizeLargePositionsPrimaryBottom="unset"
-              buttonLineHeight="48px"
-              buttonMargin="unset"
-              buttonMinWidth="120px"
-              buttonColor="#ff6636"
-              buttonDisplay="inline-block"
-              buttonTextAlign="left"
-            />
-            <SizeLargePositionsPrimary
-              button="Sign In"
-              sizeLargePositionsPrimaryBackgroundColor="#ff6636"
-              sizeLargePositionsPrimaryBorder="unset"
-              sizeLargePositionsPrimaryPosition="unset"
-              sizeLargePositionsPrimaryTop="unset"
-              sizeLargePositionsPrimaryLeft="unset"
-              sizeLargePositionsPrimaryWidth="unset"
-              sizeLargePositionsPrimaryMarginLeft="unset"
-              sizeLargePositionsPrimaryMargin="unset"
-              sizeLargePositionsPrimaryRight="unset"
-              sizeLargePositionsPrimaryBottom="unset"
-              buttonLineHeight="48px"
-              buttonMargin="unset"
-              buttonMinWidth="52px"
-              buttonColor="#fff"
-              buttonDisplay="inline-block"
-              buttonTextAlign="left"
-            />
+           
           </div>
         </div>
       </div>

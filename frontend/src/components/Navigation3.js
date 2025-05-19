@@ -10,42 +10,43 @@ import Property1Active from "./Property1Active";
 import LOGO from "./LOGO";
 import BrowseCategorySelect from "./BrowseCategorySelect";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
 const Navigation3 = () => {
   return (
     <section className="self-stretch flex flex-col items-start justify-start top-[0] z-[99] sticky max-w-full">
       <header className="self-stretch bg-gray-900 flex flex-row items-center justify-between py-0 px-8 box-border max-w-full gap-[20px]">
         <nav className="m-0 flex flex-row items-center justify-center gap-[8px] max-w-full">
+           <Link to="/homepage1" style={{ textDecoration: 'none' }}>
           <Property1Active
             home="Home"
             property1ActiveBoxShadow="0px 2px 0px #ff6636 inset"
             homeColor="#fff"
             homeMinWidth="39px"
           />
+          </Link>
           <Property1Active
             home="Courses"
             property1ActiveBoxShadow="unset"
             homeColor="#8c94a3"
             homeMinWidth="55px"
           />
-          <Property1Active
-            home="About"
-            property1ActiveBoxShadow="unset"
-            homeColor="#8c94a3"
-            homeMinWidth="40px"
-          />
-          <Property1Active
-            home="Contact"
-            property1ActiveBoxShadow="unset"
-            homeColor="#8c94a3"
-            homeMinWidth="53px"
-          />
-          <Property1Active
-            home="Become an Instructor"
-            property1ActiveBoxShadow="unset"
-            homeColor="#8c94a3"
-            homeMinWidth="unset"
-          />
+       <Link to="/27-about" style={{ textDecoration: 'none' }}>
+                 <Property1Active
+                   home="About"
+                   property1ActiveBoxShadow="unset"
+                   homeColor="#8c94a3"
+                   homeMinWidth="40px"
+                 />
+                 </Link>
+          <Link to="/28-contact" style={{ textDecoration: 'none' }}>
+                   <Property1Active
+                     home="Contact"
+                     property1ActiveBoxShadow="unset"
+                     homeColor="#8c94a3"
+                     homeMinWidth="53px"
+                   />
+                   </Link>
         </nav>
         <div className="flex flex-row items-start justify-start gap-[24px] mq1400:hidden">
           <FormControl

@@ -8,7 +8,7 @@ const TopNav3 = () => {
   return (
     <div className="self-stretch bg-gray-900 flex flex-row items-center justify-between py-0 px-8 box-border max-w-full gap-[20px] text-left text-sm text-gray-400 font-body-medium-400">
       <div className="flex flex-row items-center justify-center gap-[8px] max-w-full">
-      <Link to="/" style={{ textDecoration: 'none' }}>
+      <Link to="/homepage1" style={{ textDecoration: 'none' }}>
                <Property1Active
                  home="Home"
                  property1ActiveBoxShadow="0px 2px 0px #ff6636 inset"

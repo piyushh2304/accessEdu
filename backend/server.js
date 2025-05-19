@@ -12,6 +12,7 @@ connectDB();
 // Route files
 const authRoutes = require('./routes/authRoutes');
 const courseRoutes = require('./routes/courseRoutes');
+const muxRoutes = require('./routes/muxRoutes'); // Add Mux routes
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(cors());
 // Mount routers
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
+app.use('/api/mux', muxRoutes); // Mount Mux API endpoints
 
 // Basic route
 app.get('/', (req, res) => {
@@ -31,7 +33,6 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

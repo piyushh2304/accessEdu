@@ -8,7 +8,7 @@ const StNav3 = () => {
     <div className="self-stretch bg-gray-white shadow-[0px_-1px_0px_#e9eaf0_inset] flex flex-row items-start justify-between py-6 px-8 box-border max-w-full gap-[20px]">
       <div className="w-[904px] flex flex-row items-start justify-start gap-[50px] max-w-full mq450:gap-[50px_25px]">
         <div className="flex flex-col items-start justify-start pt-1 px-0 pb-0">
-           <Link to="/" style={{ textDecoration: 'none' }}>
+           <Link to="/homepage1" style={{ textDecoration: 'none' }}>
           <LOGO
             graduationCap="/graduationcap2.svg"
             eTutor="AccessEdu"
@@ -56,47 +56,8 @@ const StNav3 = () => {
         </div>
       </div>
       <div className="flex flex-row items-center justify-start gap-[24px] max-w-full">
-        <img className="h-6 w-6 relative" alt="" src="/bell3.svg" />
-        <img className="h-6 w-6 relative" alt="" src="/heart1.svg" />
         <div className="flex flex-row items-start justify-start gap-[12px] mq925:hidden">
-          <SizeLargePositionsPrimary
-            button="Create Account"
-            sizeLargePositionsPrimaryBackgroundColor="#ffeee8"
-            sizeLargePositionsPrimaryBorder="unset"
-            sizeLargePositionsPrimaryPosition="unset"
-            sizeLargePositionsPrimaryTop="unset"
-            sizeLargePositionsPrimaryLeft="unset"
-            sizeLargePositionsPrimaryWidth="unset"
-            sizeLargePositionsPrimaryMarginLeft="unset"
-            sizeLargePositionsPrimaryMargin="unset"
-            sizeLargePositionsPrimaryRight="unset"
-            sizeLargePositionsPrimaryBottom="unset"
-            buttonLineHeight="48px"
-            buttonMargin="unset"
-            buttonMinWidth="120px"
-            buttonColor="#ff6636"
-            buttonDisplay="inline-block"
-            buttonTextAlign="left"
-          />
-          <SizeLargePositionsPrimary
-            button="Sign In"
-            sizeLargePositionsPrimaryBackgroundColor="#ff6636"
-            sizeLargePositionsPrimaryBorder="unset"
-            sizeLargePositionsPrimaryPosition="unset"
-            sizeLargePositionsPrimaryTop="unset"
-            sizeLargePositionsPrimaryLeft="unset"
-            sizeLargePositionsPrimaryWidth="unset"
-            sizeLargePositionsPrimaryMarginLeft="unset"
-            sizeLargePositionsPrimaryMargin="unset"
-            sizeLargePositionsPrimaryRight="unset"
-            sizeLargePositionsPrimaryBottom="unset"
-            buttonLineHeight="48px"
-            buttonMargin="unset"
-            buttonMinWidth="52px"
-            buttonColor="#fff"
-            buttonDisplay="inline-block"
-            buttonTextAlign="left"
-          />
+          
         </div>
       </div>
     </div>

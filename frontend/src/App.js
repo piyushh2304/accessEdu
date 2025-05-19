@@ -1,10 +1,5 @@
 import { useEffect } from "react";
-import {
-  Routes,
-  Route,
-  useNavigationType,
-  useLocation,
-} from "react-router-dom";
+import { Routes, Route, useNavigationType, useLocation } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import SignUp from "./pages/SignUp";
 import InstructorProfile from "./pages/InstructorProfile";
@@ -33,6 +28,9 @@ import StudentSettings from "./pages/StudentSettings";
 import InstructorCreateCourseCurri2 from "./components/InstructorCreateCourseCurri21";
 import InstructorCreateCourseCurri from "./components/InstructorCreateCourseCurri";
 import InstructorCreateCourseCurri3 from "./components/InstructorCreateCourseCurri3";
+import VideoPlayer from "./components/VideoPlayer"; // Ensure correct path
+import Homepage1 from "./pages/Homepage1"; 
+
 
 function App() {
   const action = useNavigationType();
@@ -53,6 +51,10 @@ function App() {
       case "/":
         title = "";
         metaDescription = "";
+        break;
+        case "/homepage1":
+        title = "Homepage Variant";
+        metaDescription = "Alternative homepage view";
         break;
       case "/29-sign-up":
         title = "";
@@ -162,6 +164,11 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+        case "/homepage":
+        title = "";
+        metaDescription = "";
+        break;
+      
     }
 
     if (title) {
@@ -169,9 +176,7 @@ function App() {
     }
 
     if (metaDescription) {
-      const metaDescriptionTag = document.querySelector(
-        'head > meta[name="description"]'
-      );
+      const metaDescriptionTag = document.querySelector('head > meta[name="description"]');
       if (metaDescriptionTag) {
         metaDescriptionTag.content = metaDescription;
       }
@@ -180,40 +185,20 @@ function App() {
 
   return (
     <Routes>
-     <Route path="/" element={<Homepage />} />
+      <Route path="/" element={<Homepage />} />
+      <Route path="/homepage1" element={<Homepage1 />} /> 
       <Route path="/29-sign-up" element={<SignUp />} />
       <Route path="/10-instructor-profile" element={<InstructorProfile />} />
-      <Route
-        path="/19-instructor-create-course-curriculum"
-        element={<InstructorCreateCourseCurri11 />}
-      />
-      <Route
-        path="/18-instructor-create-course-advance-information"
-        element={<InstructorCreateCourseAdvan />}
-      />
-      <Route
-        path="/17-instructor-create-course-basic-information"
-        element={<InstructorCreateCourseBasic />}
-      />
+      <Route path="/19-instructor-create-course-curriculum" element={<InstructorCreateCourseCurri11 />} />
+      <Route path="/18-instructor-create-course-advance-information" element={<InstructorCreateCourseAdvan />} />
+      <Route path="/17-instructor-create-course-basic-information" element={<InstructorCreateCourseBasic />} />
       <Route path="/16-instructor-settings" element={<InstructorSettings />} />
       <Route path="/15-instructor-message" element={<InstructorMessage />} />
-      <Route
-        path="/14-instructor-my-courses-course-detail"
-        element={<InstructorMyCoursesCourseD />}
-      />
-      <Route
-        path="/13-instructor-my-courses"
-        element={<InstructorMyCourses />}
-      />
-      <Route
-        path="/12-instructor-dashboard"
-        element={<InstructorDashboard />}
-      />
+      <Route path="/14-instructor-my-courses-course-detail" element={<InstructorMyCoursesCourseD />} />
+      <Route path="/13-instructor-my-courses" element={<InstructorMyCourses />} />
+      <Route path="/12-instructor-dashboard" element={<InstructorDashboard />} />
       <Route path="/11-become-an-instrcutor" element={<BecomeAnInstrcutor />} />
-      <Route
-        path="/26-instructor-create-course-publish-course"
-        element={<InstructorCreateCoursePubli />}
-      />
+      <Route path="/26-instructor-create-course-publish-course" element={<InstructorCreateCoursePubli />} />
       <Route path="/30-sign-in" element={<SignIn />} />
       <Route path="/28-contact" element={<Contact />} />
       <Route path="/27-about" element={<About />} />
@@ -226,19 +211,14 @@ function App() {
       <Route path="/07-student-courses" element={<StudentCourses />} />
       <Route path="/06-student-dashboard" element={<StudentDashboard />} />
       <Route path="/91-student-settings" element={<StudentSettings />} />
-      <Route
-        path="/23-instructor-create-course-curriculum-attach-file"
-        element={<InstructorCreateCourseCurri2 />}
-      />
-      <Route
-        path="/25-instructor-create-course-curriculum-description"
-        element={<InstructorCreateCourseCurri />}
-      />
-      <Route
-        path="/21-instructor-create-course-curriculum-video"
-        element={<InstructorCreateCourseCurri3 />}
-      />
+      <Route path="/23-instructor-create-course-curriculum-attach-file" element={<InstructorCreateCourseCurri2 />} />
+      <Route path="/25-instructor-create-course-curriculum-description" element={<InstructorCreateCourseCurri />} />
+      <Route path="/21-instructor-create-course-curriculum-video" element={<InstructorCreateCourseCurri3 />} />
+      {/* Fixed route to include dynamic courseId parameter */}
+      <Route path="/video-player/:courseId" element={<VideoPlayer />} />
+
     </Routes>
   );
 }
+
 export default App;

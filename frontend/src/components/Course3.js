@@ -1,48 +1,87 @@
 import { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Course3 = ({
-  courseImages,
-  digitalMarketingMastercla,
-  whatYoullNeedToGetStarted,
-  propWidth,
+  courseImage,
+  courseTitle,
+  courseSubtitle,
+  progressPercent, // e.g., 61
+  progressStatus,  // e.g., "Completed", "Finish"
+  isActive,        // true if button should be highlighted
+  courseId,
+  propWidth
 }) => {
-  const course3Style = useMemo(() => {
-    return {
-      width: propWidth,
-    };
-  }, [propWidth]);
+  const navigate = useNavigate();
+
+  const course3Style = useMemo(() => ({
+    width: propWidth,
+    background: "#181818", // dark background as in screenshot
+    borderRadius: 8,
+    overflow: "hidden",
+    border: "1px solid #222"
+  }), [propWidth]);
+
+  const handleWatchLecture = () => {
+    navigate(`/video-player/${courseId}`);
+  };
 
   return (
-    <div
-      className="h-[367px] w-[312px] bg-gray-white box-border flex flex-col items-start justify-start gap-[15.75px] text-left text-xs text-gray-600 font-body-medium-400 border-[1px] border-solid border-gray-100"
-      style={course3Style}
-    >
+    <div style={course3Style} className="flex flex-col">
       <img
-        className="self-stretch h-[220px] relative max-w-full overflow-hidden shrink-0 object-cover"
-        loading="lazy"
+        src={courseImage}
         alt=""
-        src={courseImages}
+        style={{
+          width: "100%",
+          height: 180,
+          objectFit: "cover"
+        }}
       />
-      <div className="self-stretch flex flex-row items-start justify-start py-0 px-4">
-        <div className="flex-1 flex flex-col items-start justify-start gap-[6px]">
-          <div className="relative leading-[16px]">
-            {digitalMarketingMastercla}
+      <div style={{ padding: "16px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+        <div>
+          <div style={{ color: "#fff", fontWeight: 600, fontSize: 14, marginBottom: 4 }}>
+            {courseTitle}
           </div>
-          <div className="self-stretch relative text-sm tracking-[-0.01em] leading-[20px] font-medium text-gray-900">
-            {whatYoullNeedToGetStarted}
+          <div style={{ color: "#ccc", fontSize: 13, marginBottom: 12 }}>
+            {courseSubtitle}
           </div>
         </div>
-      </div>
-      <div className="self-stretch h-px relative box-border border-t-[1px] border-solid border-gray-100" />
-      <div className="self-stretch flex flex-row items-start justify-start py-0 px-4 text-sm text-primary-500">
-        <div className="flex-1 bg-primary-100 flex flex-row items-start justify-center py-0 px-5 whitespace-nowrap">
-          <div className="relative leading-[40px] capitalize font-semibold inline-block min-w-[99px]">
+        <div style={{ display: "flex", alignItems: "center", marginBottom: 12 }}>
+          <button
+            onClick={handleWatchLecture}
+            style={{
+              background: isActive ? "#FF6F3D" : "#232323",
+              color: isActive ? "#fff" : "#FF6F3D",
+              border: "none",
+              borderRadius: 4,
+              padding: "8px 18px",
+              fontWeight: 600,
+              cursor: "pointer",
+              marginRight: 12
+            }}
+          >
             Watch Lecture
-          </div>
+          </button>
+          {progressPercent !== undefined && (
+            <span style={{ color: "#20C997", fontWeight: 500, fontSize: 13 }}>
+              {progressPercent}% {progressStatus}
+            </span>
+          )}
         </div>
-      </div>
-      <div className="self-stretch h-px flex flex-row items-end justify-start pt-0 px-0 pb-0 box-border opacity-[0]">
-        <div className="h-0.5 w-[190px] relative bg-success-500" />
+        {/* Progress bar */}
+        {progressPercent !== undefined && (
+          <div style={{
+            height: 4,
+            background: "#333",
+            borderRadius: 2,
+            overflow: "hidden"
+          }}>
+            <div style={{
+              width: `${progressPercent}%`,
+              height: "100%",
+              background: "#20C997"
+            }} />
+          </div>
+        )}
       </div>
     </div>
   );

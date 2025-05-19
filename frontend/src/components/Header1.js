@@ -13,9 +13,9 @@ const Header = () => {
             Our platform is designed to be accessible and inclusive, catering to
             the diverse needs of learners of all abilities.
           </h2>
-           <Link to="/29-sign-up" style={{ textDecoration: 'none' }}>
+           <Link to="/06-student-dashboard" style={{ textDecoration: 'none' }}>
           <SizeMediumPositionsPrimary
-            button="Create Account"
+            button="Student Dashboard"
             sizeMediumPositionsPrimarBackgroundColor="#ff6636"
             sizeMediumPositionsPrimarWidth="unset"
             sizeMediumPositionsPrimarAlignSelf="unset"

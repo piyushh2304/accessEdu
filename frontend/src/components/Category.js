@@ -89,7 +89,7 @@ const Category = () => {
       </div>
       <div className="w-[369px] flex flex-row flex-wrap items-center justify-start gap-[12px] max-w-full text-center text-sm text-gray-700">
         <div className="flex-1 relative tracking-[-0.01em] leading-[22px] inline-block min-w-[166px]">{`We have more category & subcategory.`}</div>
-        <Link to="02-course-category" style={{ textDecoration: 'none' }}>
+        <Link to="/02-course-category" style={{ textDecoration: 'none' }}>
         <StatusFalseColorPrimary
           labal="Browse All"
           statusFalseColorPrimaryBorder="none"

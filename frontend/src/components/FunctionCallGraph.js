@@ -1,4 +1,4 @@
-import VideoPlayer from "./VideoPlayer";
+import VideoPlayer from "../components/VideoPlayer"; 
 import SizeMediumPositionsPrimary2 from "./SizeMediumPositionsPrimary2";
 import SizeLargePositionsPrimary from "./SizeLargePositionsPrimary";
 

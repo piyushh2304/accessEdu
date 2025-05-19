@@ -1,10 +1,48 @@
+import { useNavigate } from "react-router-dom";
 import StudentsProfile from "./StudentsProfile";
 import FunFact1 from "./FunFact1";
 import FunFact from "./FunFact";
 import CircleFalseStatusFalsePo from "./CircleFalseStatusFalsePo";
-import Course3 from "./Course3";
 
 const ParentWithConnections = () => {
+  const navigate = useNavigate();
+
+  const handleWatchLecture = (courseId) => {
+    navigate(`/video-player/${courseId}`);
+  };
+
+  const courses = [
+    {
+      courseId: 1,
+      image: "/course-images3@2x.png",
+      title: "Javascript Promises",
+      subtitle: "1. Intorductions",
+      isActive: true,
+
+    },
+    {
+      courseId: 2,
+      image: "/course-images-115@2x.png",
+      title: "Javascript async/await",
+      subtitle: "What You'll Need to Get Started",
+      isActive: true,
+    },
+    {
+      courseId: 3,
+      image: "/course-images-25@2x.png",
+      title: "Copywriting - Become a Freelance Copywriter",
+      subtitle: "14. How to get started with figma ",
+      isActive: true,
+    },
+    {
+      courseId: 4,
+      image: "/course-images-92@2x.png",
+      title: "2021 Complete Python Bootcamp",
+      subtitle: "9. Advanced CSS ",
+      isActive: true,
+    },
+  ];
+
   return (
     <div className="w-[1320px] flex flex-col items-start justify-start gap-[40px] max-w-full text-left text-5xl text-gray-900 font-body-medium-400 mq825:gap-[20px_40px]">
       <StudentsProfile
@@ -62,9 +100,9 @@ const ParentWithConnections = () => {
             <CircleFalseStatusFalsePo
               arrowRight="/arrowright.svg"
               circleFalseStatusFalsePoPadding="8px"
-              circleFalseStatusFalsePoTransform=" rotate(180deg)"
+              circleFalseStatusFalsePoTransform="rotate(180deg)"
               circleFalseStatusFalsePoBackgroundColor="#ffeee8"
-              arrowRightIconTransform=" rotate(-180deg)"
+              arrowRightIconTransform="rotate(-180deg)"
             />
             <CircleFalseStatusFalsePo
               arrowRight="/arrowright.svg"
@@ -76,90 +114,53 @@ const ParentWithConnections = () => {
           </div>
         </div>
         <div className="self-stretch grid flex-row items-start justify-start gap-[24px] grid-cols-[repeat(4,_minmax(234px,_1fr))] text-xs text-gray-600 lg:justify-center lg:grid-cols-[repeat(2,_minmax(234px,_406px))] mq450:grid-cols-[minmax(234px,_1fr)]">
-          <Course3
-            courseImages="/course-images3@2x.png"
-            digitalMarketingMastercla="Reiki Level I, II and Master/Teacher Program"
-            whatYoullNeedToGetStarted="1. Intorductions"
-            propWidth="unset"
-          />
-          <div className="h-[367px] bg-gray-white box-border flex flex-col items-start justify-start gap-[15.75px] border-[1px] border-solid border-gray-100">
-            <img
-              className="self-stretch h-[220px] relative max-w-full overflow-hidden shrink-0 object-cover"
-              loading="lazy"
-              alt=""
-              src="/course-images-115@2x.png"
-            />
-            <div className="self-stretch flex flex-row items-start justify-start py-0 px-4">
-              <div className="flex-1 flex flex-col items-start justify-start gap-[6px]">
-                <div className="relative leading-[16px]">
-                  The Complete 2021 Web Development Bootcamp
-                </div>
-                <div className="relative text-sm tracking-[-0.01em] leading-[20px] font-medium text-gray-900">
-                  167. What You'll Need to Get Started - Se...
-                </div>
-              </div>
-            </div>
-            <div className="self-stretch h-px relative box-border border-t-[1px] border-solid border-gray-100" />
-            <div className="self-stretch flex flex-row items-start justify-start py-0 px-4 text-sm text-primary-500">
-              <div className="flex-1 flex flex-row items-start justify-between gap-[20px]">
-                <div className="bg-primary-100 flex flex-row items-start justify-start py-0 px-[15px] whitespace-nowrap">
-                  <div className="relative leading-[40px] capitalize font-semibold inline-block min-w-[99px]">
-                    Watch Lecture
-                  </div>
-                </div>
-                <div className="flex flex-col items-start justify-start pt-2.5 px-0 pb-0 text-success-500">
-                  <div className="relative tracking-[-0.01em] leading-[20px] font-medium inline-block min-w-[103px]">
-                    61% Completed
+          {courses.map((course) => (
+            <div
+              key={course.courseId}
+              className={`h-[367px] bg-gray-white box-border flex flex-col items-start justify-start gap-[15.75px] border-[1px] border-solid border-gray-100 ${
+                course.isActive ? "shadow-[0px_12px_48px_rgba(29,_32,_38,_0.12)]" : ""
+              }`}
+            >
+              <img
+                className="self-stretch h-[220px] relative max-w-full overflow-hidden shrink-0 object-cover"
+                loading="lazy"
+                alt=""
+                src={course.image}
+              />
+              <div className="self-stretch flex flex-row items-start justify-start py-0 px-4">
+                <div className="flex-1 flex flex-col items-start justify-start gap-[6px]">
+                  <div className="relative leading-[16px]">{course.title}</div>
+                  <div className="self-stretch relative text-sm tracking-[-0.01em] leading-[20px] font-medium text-gray-900">
+                    {course.subtitle}
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="self-stretch h-px flex flex-row items-end justify-start pt-0 px-0 pb-0 box-border">
-              <div className="h-0.5 w-[190px] relative bg-primary-500" />
-            </div>
-          </div>
-          <Course3
-            courseImages="/course-images-25@2x.png"
-            digitalMarketingMastercla="Copywriting - Become a Freelance Copywriter..."
-            whatYoullNeedToGetStarted="1. How to get started with figma"
-            propWidth="unset"
-          />
-          <div className="h-[367px] bg-gray-white shadow-[0px_12px_48px_rgba(29,_32,_38,_0.12)] flex flex-col items-start justify-start gap-[15.75px]">
-            <img
-              className="self-stretch h-[220px] relative max-w-full overflow-hidden shrink-0 object-cover"
-              loading="lazy"
-              alt=""
-              src="/course-images-92@2x.png"
-            />
-            <div className="self-stretch flex flex-row items-start justify-start py-0 px-4">
-              <div className="flex-1 flex flex-col items-start justify-start gap-[6px]">
-                <div className="relative leading-[16px]">
-                  2021 Complete Python Bootcamp From Zero to...
-                </div>
-                <div className="self-stretch relative text-sm tracking-[-0.01em] leading-[20px] font-medium text-gray-900">
-                  9. Advanced CSS - Selector Priority
-                </div>
-              </div>
-            </div>
-            <div className="self-stretch h-px relative box-border border-t-[1px] border-solid border-gray-100" />
-            <div className="self-stretch flex flex-row items-start justify-start py-0 px-4 text-sm text-gray-white">
-              <div className="flex-1 flex flex-row items-start justify-between gap-[20px]">
-                <div className="bg-primary-500 flex flex-row items-start justify-start py-0 px-[15px] whitespace-nowrap">
-                  <div className="relative leading-[40px] capitalize font-semibold inline-block min-w-[99px]">
-                    Watch Lecture
-                  </div>
-                </div>
-                <div className="flex flex-col items-start justify-start pt-2.5 px-0 pb-0 text-success-500">
-                  <div className="relative tracking-[-0.01em] leading-[20px] font-medium inline-block min-w-[69px]">
-                    12% Finish
+              <div className="self-stretch h-px relative box-border border-t-[1px] border-solid border-gray-100" />
+              <div
+                className={`self-stretch flex flex-row items-start justify-start py-0 px-4 text-sm ${
+                  course.isActive ? "text-gray-white" : "text-primary-500"
+                }`}
+              >
+                <div className="flex-1 flex flex-row items-start justify-start">
+                  <div
+                    className={`${
+                      course.isActive ? "bg-primary-500" : "bg-primary-100"
+                    } flex flex-row items-start justify-start py-0 px-[15px] whitespace-nowrap`}
+                  >
+                    <div
+                      onClick={() => handleWatchLecture(course.courseId)}
+                      className="relative leading-[40px] capitalize font-semibold inline-block min-w-[99px] cursor-pointer"
+                    >
+                      Watch Lecture
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="self-stretch h-px flex flex-row items-end justify-start pt-0 px-0 pb-0 box-border opacity-[0]">
+                <div className="h-0.5 w-[190px] relative bg-primary-500" />
+              </div>
             </div>
-            <div className="self-stretch h-px flex flex-row items-end justify-start pt-0 px-0 pb-0 box-border">
-              <div className="h-0.5 w-[190px] relative bg-primary-500" />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

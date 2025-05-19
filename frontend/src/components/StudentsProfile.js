@@ -1,5 +1,6 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SizeMediumPositionsPrimary1 from "./SizeMediumPositionsPrimary1";
+import { authService } from "../services/api";
 
 const StudentsProfile = ({
   arrowRight,
@@ -17,9 +18,37 @@ const StudentsProfile = ({
   propBackgroundColor3,
   propBoxShadow3,
   propColor3,
-  username = "Guest", // Default value if username is not provided
+  username, // Custom username prop if provided externally
   role = "Web Designer", // Default role if not provided
 }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        if (typeof authService !== "undefined") {
+          const fetchedUser = await authService.getCurrentUser();
+          setCurrentUser(fetchedUser);
+        } else {
+          console.warn("authService is not defined. Unable to fetch user data.");
+          setCurrentUser(null);
+        }
+      } catch (error) {
+        console.error("Failed to fetch user data asynchronously:", error);
+        setCurrentUser(null);
+      }
+    };
+
+    // Always fetch user data on component mount to ensure the latest user is loaded
+    fetchUser();
+  }, []); // Empty dependency array ensures this runs only on mount
+
+  const displayUsername = username || (
+    <h2>
+      Welcome, {currentUser ? `${currentUser.firstName} ${currentUser.lastName}` : "Student"}!
+    </h2>
+  );
+
   const studentsProfileStyle = useMemo(() => {
     return {
       alignSelf: propAlignSelf,
@@ -27,6 +56,7 @@ const StudentsProfile = ({
     };
   }, [propAlignSelf, propFlex]);
 
+  // Rest of the styling useMemo hooks remain unchanged
   const tabsStyle = useMemo(() => {
     return {
       backgroundColor: propBackgroundColor,
@@ -89,12 +119,12 @@ const StudentsProfile = ({
           <img
             className="h-[110px] w-[110px] relative rounded-[50%] object-cover"
             loading="lazy"
-            alt=""
+            alt="Profile"
             src="/photos1@2x.png"
           />
           <div className="flex-1 flex flex-col items-start justify-center gap-[14px] min-w-[381px] max-w-full mq825:min-w-full">
             <h2 className="m-0 self-stretch relative text-inherit tracking-[-0.01em] leading-[32px] font-semibold font-inherit mq450:text-lgi mq450:leading-[26px]">
-              {username}
+              {displayUsername}
             </h2>
             <div className="self-stretch relative text-base leading-[24px] text-gray-600">
               {role}

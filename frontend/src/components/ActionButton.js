@@ -9,6 +9,8 @@ const ActionButton = ({
   propColor,
   propMinWidth,
   propPadding,
+  onPress,
+  disabled,
 }) => {
   const buttonsStyle = useMemo(() => {
     return {
@@ -33,14 +35,19 @@ const ActionButton = ({
   const navigate = useNavigate();
 
   const onButtonsClick = useCallback(() => {
-    navigate("/06-student-dashboard");
-  }, [navigate]);
+    if(onPress){
+      onPress();
+    }else{
+      navigate("/homepage1");
+    }
+  }, [navigate,onPress]);
 
   return (
     <button
       className="cursor-pointer [border:none] py-0 px-6 bg-primary-100 flex flex-row items-start justify-start gap-[12px]"
       onClick={onButtonsClick}
       style={buttonsStyle}
+      disabled={disabled}
     >
       <div
         className="relative text-base tracking-[-0.01em] leading-[48px] capitalize font-semibold font-body-medium-400 text-primary-500 text-left inline-block min-w-[62px]"
